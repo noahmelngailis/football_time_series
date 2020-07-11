@@ -56,6 +56,14 @@ def rename_columns(df):
     ))
     return df
 
+def make_number_seasons(df):
+    """makes column for number of seasons a team is in the epl"""
+    seasons_series = df.groupby('team_name').draws.count()
+    df2 = pd.DataFrame(seasons_series)
+    df2 = df2.rename(columns={'draws':'seasons_in_epl'})
+    df = df.set_index('team_name').join(df2)
+    return df
+
 def epl_aq_all():
     """Acquires all years of EPL standings and returns one Data Frame Takes this year as range"""
     import datetime as d
@@ -63,7 +71,8 @@ def epl_aq_all():
     df = epl_year_aq(2002)
     for year in range(2003,this_year):
         df = pd.concat([df, epl_year_aq(year)])
-    df['year'] = pd.to_datetime(df['year'], format= '%Y')
-    df = df.set_index('year')
+    df['year_dt'] = pd.to_datetime(df['year'], format= '%Y')
+    df = df.set_index('year_dt')
     df = rename_columns(df)
+    df = make_number_seasons(df)
     return df

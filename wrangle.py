@@ -64,6 +64,8 @@ def make_number_seasons(df):
     df = df.set_index('team_name').join(df2)
     return df
 
+### need to add in new functions here
+
 def epl_aq_all():
     """Acquires all years of EPL standings and returns one Data Frame Takes this year as range"""
     import datetime as d

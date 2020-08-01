@@ -22,4 +22,19 @@ def preprocessing_script(df):
     
     # make next season points for modeling
     df["next_season_points"] = (df.groupby('team_name')['points'].shift(-1))   
+    
+    # goal percentage
+    df['goal_percentage'] = df.goals_for / (df.goals_for+df.goals_against)
+
+    # win rate
+    df['win_rate'] = df.wins / df.losses
+    
+    # surpluss goals
+    df['surpluss_goals'] = df.goal_differential - df.wins
+
+    # points rate
+    df['points_rate'] = (df.wins + df.draws) / df.losses
+    
+    # goals per loss
+    df['goals_per_loss'] = df.goals_for/ (df.losses)
     return df

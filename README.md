@@ -20,3 +20,9 @@ Soccer has three major differences from baseball and football:
 ## Data
     1. Premier league data was taken from espn.com
     
+## Exploration
+
+## Modeling
+
+
+## Evaluation

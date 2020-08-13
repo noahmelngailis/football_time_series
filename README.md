@@ -23,6 +23,7 @@ Soccer has three major differences from baseball and football:
 ## Exploration
 
 ## Modeling
-
+### Single Feature modeling
+### RFE - recursive feature engineering modeling
 
 ## Evaluation

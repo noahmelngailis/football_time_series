@@ -28,6 +28,7 @@ def epl_year_aq(year):
     return season
 
 def rename_columns(df):
+    """ renames columns to pythonic script """
     df = df.rename(columns=({'GP': 'games_played',
                             'W': 'wins',
                             'D': 'draws',

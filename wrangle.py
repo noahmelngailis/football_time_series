@@ -53,12 +53,12 @@ def make_number_seasons(df):
 def epl_aq_all():
     """Acquires all years of EPL standings and returns one Data Frame Takes this year as range"""
     import datetime as d
-    this_year = d.datetime.now().year - 1
+    this_year = d.datetime.now().year
     df = epl_year_aq(2002)
     for year in range(2003,this_year):
         df = pd.concat([df, epl_year_aq(year)])
     df = rename_columns(df)
     df = make_number_seasons(df)
     df.reset_index(inplace=True)
-    # df.to_csv('epl_years.csv')
+    df.to_csv('epl_years.csv')
     return df
